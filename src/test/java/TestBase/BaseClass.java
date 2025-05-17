@@ -44,12 +44,13 @@ public class BaseClass {
 		switch (br.toLowerCase()) {
 			case "chrome":
 				ChromeOptions chromeOptions = new ChromeOptions();
-				String userDataDir = System.getProperty("java.io.tmpdir") + "/chrome-profile-" + System.currentTimeMillis();
-				chromeOptions.addArguments("--user-data-dir=" + userDataDir);
-				chromeOptions.addArguments("--no-sandbox");
-				chromeOptions.addArguments("--disable-dev-shm-usage");
-				driver = new ChromeDriver(chromeOptions);
-				break;
+			            chromeOptions.addArguments("--no-sandbox");
+			            chromeOptions.addArguments("--disable-dev-shm-usage");
+			            chromeOptions.addArguments("--disable-gpu");
+			            chromeOptions.addArguments("--disable-extensions");
+			            chromeOptions.addArguments("--remote-allow-origins=*"); // optional for newer Chrome
+			            driver = new ChromeDriver(chromeOptions);
+			            break;
 				
 			case "edge":
 				driver = new EdgeDriver();
@@ -74,7 +75,7 @@ public class BaseClass {
 	@AfterClass
 	public void tearDown() {
 		if (driver != null) {
-			driver.quit();  // better than close()
+			driver.quit();  
 		}
 	}
 	
