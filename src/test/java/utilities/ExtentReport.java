@@ -1,6 +1,7 @@
 package utilities;
 
 
+import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -31,7 +32,8 @@ public class ExtentReport implements ITestListener {
 		
 		String timeStamp = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new Date());
 		repName = "Test-Report" + timeStamp + ".html";
-		sparkReporter = new ExtentSparkReporter(".\\reports\\" + repName);
+		String folder = System.getProperty("user.dir");
+		sparkReporter = new ExtentSparkReporter(folder +File.separator + "reports" +File.separator + repName);
 		
 		sparkReporter.config().setDocumentTitle("JPetStore_Automation Report"); // Title of report
 		sparkReporter.config().setReportName("JPetStore Testing"); // name of the report
