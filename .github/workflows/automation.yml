@@ -1,4 +1,4 @@
-name: Java Maven CI Pipeline
+name: JPetStore demo
 
 on:
   workflow_dispatch:   # Manual trigger
@@ -43,4 +43,4 @@ jobs:
           name: test-reports
           path: |
             target/surefire-reports
-            reports   # your ExtentReports folder if any
+            reports   
